@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Names and Ages</title>
+</head>
+<body>
+  <h1>Receiver Details</h1>
+  <ul id="names-list"></ul>
+  
+  <script>
+    // Fetch data from API endpoint
+    fetch('https://gdscwowbe.vercel.app/bloodreceiver')//https://gdscwowbe-ojdwhy0vx-subhranshuchoudhury.vercel.app/
+      .then(response => response.json())
+      .then(data => {
+        // Create list items for each name and age
+        const namesList = document.getElementById('names-list');
+        data.forEach(item => {
+          const li = document.createElement('li');
+          li.textContent = `Name: ${item.name} Phone: ${item.phone} Email: ${item.email} Date: ${item.date_of_appointment} age:${item.age} dob:${item.dob} blood_group:${item.blood_group} aadhaar:${item.aadhaar}`;
+          namesList.appendChild(li);
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+</html>
